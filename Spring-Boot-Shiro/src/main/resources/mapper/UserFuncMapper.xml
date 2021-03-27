@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.mapper.UserFuncMapper">
+
+    <resultMap type="com.springboot.bean.Func" id="func">
+        <id column="role_id" property="id" javaType="java.lang.Integer" jdbcType="NUMERIC"/>
+        <id column="role_name" property="name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <id column="role_desc" property="src" javaType="java.lang.String" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="findByUserName" resultMap="func">
+        SELECT fu.func_id ID, fu.func_name NAME, fu.func_page_src src FROM m_func fu, m_role_func rf, m_role r,
+        m_user_role ur, m_user u WHERE fu.func_id = rf.func_id AND rf.role_id = r.role_id AND r.role_id = ur.role_id AND
+        u.user_id = ur.user_id AND u.user_name = #{userName,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

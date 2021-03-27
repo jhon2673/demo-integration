@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.ActivityDao">
+    <resultMap id="BaseResultMap" type="com.example.document.Activity">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="activity_type" jdbcType="INTEGER" property="activityType"/>
+        <result column="activity_name" jdbcType="VARCHAR" property="activityName"/>
+        <result column="activity_org" jdbcType="VARCHAR" property="activityOrg"/>
+        <result column="create_by" jdbcType="INTEGER" property="createBy"/>
+        <result column="create_at" jdbcType="DATE" property="createAt"/>
+    </resultMap>
+
+    <select id="list" resultMap="BaseResultMap">
+        SELECT * FROM res_activity t
+    </select>
+
+</mapper>
